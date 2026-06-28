@@ -65,12 +65,30 @@
 
   <h2>3. Mode Express et analyse de texte</h2>
   <p>
-    La fonctionnalité "Mode Express" analyse le texte que vous saisissez pour en
-    extraire automatiquement les zones, surfaces et tarifs. Cette analyse est réalisée
-    <strong>entièrement en local sur votre appareil</strong>, par un moteur de
-    traitement de texte intégré à l'application. Aucun texte n'est envoyé à un
-    service tiers ou à une API distante.
+    La fonctionnalité "Mode Express" analyse le texte que vous saisissez pour en extraire
+    automatiquement les zones, surfaces et tarifs. Cette analyse fonctionne en <strong>deux étapes</strong> :
   </p>
+  <ul>
+    <li>
+      <strong>Analyse locale (prioritaire) :</strong> un moteur de traitement de texte intégré à
+      l'application tente d'extraire les informations directement sur votre appareil, sans
+      connexion réseau.
+    </li>
+    <li>
+      <strong>Affinage via un serveur externe (si nécessaire) :</strong> si la fiabilité de
+      l'analyse locale est insuffisante (inférieure à 70%), le texte que vous avez saisi est
+      envoyé à un serveur d'analyse hébergé sur Railway
+      (<em>deviscarrelage-backend-production.up.railway.app</em>) afin d'améliorer le résultat.
+      Un message "Hors-ligne" s'affiche dans l'application si ce serveur est inaccessible.
+    </li>
+  </ul>
+  <p>
+    <strong>Important :</strong> le texte transmis au serveur contient uniquement la description
+    du chantier que vous avez saisie (zones, surfaces, tarifs). Il n'est pas associé à votre
+    identité, à votre appareil, ni à aucun compte utilisateur. Le serveur ne conserve aucun
+    historique de ces requêtes.
+  </p>
+
 
   <h2>4. Widget Android</h2>
   <p>
